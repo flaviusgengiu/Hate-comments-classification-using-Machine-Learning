@@ -7,6 +7,6 @@ import seaborn as sns
 #Load the datasets
 ds1 = pd.read_csv("train_dataset.csv")
 print(ds1) 
-
+#Clean the datasets
 clean_dataset = ds1.dropna()
 print(clean_dataset)
