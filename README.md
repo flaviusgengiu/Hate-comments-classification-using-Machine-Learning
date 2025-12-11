@@ -1,4 +1,5 @@
 # Hate-comments-classification-using-Machine-Learning
 
-#This mini-project was made for academical purposes only
-#
+This mini-project was made for academical purposes only.
+It uses a data scraper to gather informations for establishing a dataset used by
+a automatic model to classificate youtube comments based on the toxicity of them.
