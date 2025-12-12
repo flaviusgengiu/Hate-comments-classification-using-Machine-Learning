@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo ML - Hate Speech</title>
+    <style>
+        body { font-family: sans-serif; background-color: #eef2f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 400px; }
+        h1 { color: #333; margin-bottom: 30px; }
+        
+        .btn-container { display: flex; flex-direction: column; gap: 15px; }
+        button { padding: 15px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; color: white; transition: transform 0.2s; font-weight: bold; }
+        button:hover { transform: scale(1.05); }
+        
+        .btn-toxic { background-color: #ff4757; } 
+        .btn-safe { background-color: #2ed573; }  
+
+        .display-box { margin-top: 30px; padding: 15px; background-color: #f1f2f6; border-radius: 10px; }
+        .text-original { font-style: italic; color: #555; margin-bottom: 10px; }
+        
+        .toxic-result { color: #ff4757; font-weight: bold; font-size: 20px; border: 2px solid #ff4757; padding: 10px; border-radius: 5px; }
+        .safe-result { color: #2ed573; font-weight: bold; font-size: 20px; border: 2px solid #2ed573; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🤖 Demo Control Pannel </h1>
+        <p> Choose what comment you want to test: </p>
+
+        <form action="/predict" method="POST" class="btn-container">
+            <button type="submit" name="buton_apasat" value="toxic" class="btn-toxic">
+                🔴 Simulate TOXIC Comment
+            </button>
+
+            <button type="submit" name="buton_apasat" value="safe" class="btn-safe">
+                🟢 Simulate NON-TOXIC Comment
+            </button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="display-box">
+            <div class="text-original">"{{ text_simulat }}"</div>
+            <br>
+            <div class="{{ clasa }}">{{ prediction_text }}</div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
