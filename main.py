@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
+import joblib
 
 # Load the dataset
 try:
@@ -66,3 +67,10 @@ ds_final = ds_final.drop(columns=['label'])
 
 # Save final results in an external csv file
 ds_final.to_csv("rezultate_model.csv", index=False, encoding='utf-8-sig')
+
+print("Saving model for interface...")
+
+joblib.dump(model, "toxic_model.pkl")
+joblib.dump(tfidf, "tfidf_vectorizer.pkl")
+
+print("Model and vectorizer saved successfully.")
