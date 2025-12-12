@@ -6,13 +6,13 @@ import random
 app = Flask(__name__)
 
 # --- 1. Încărcăm Modelele ---
-print("⏳ Se încarcă modelele și baza de date...")
+print(" Loading models and dataset...")
 try:
     model = joblib.load('toxic_model.pkl')
     vectorizer = joblib.load('tfidf_vectorizer.pkl')
-    print("✅ Modele încărcate.")
+    print(" Modes loaded.")
 except:
-    print("❌ EROARE: Nu găsesc 'toxic_model.pkl'. Rulează antrenarea mai întâi!")
+    print("ERROR: We can't find 'toxic_model.pkl'. Run main.py first!")
     exit()
 
 # --- 2. Încărcăm și Procesăm CSV-ul ---
@@ -32,7 +32,7 @@ try:
 
     # --- PASUL NOU: ETICHETARE AUTOMATĂ ---
     # Deoarece fișierul nu are etichete (label), le generăm acum!
-    print("⚙️ Se analizează comentariile din CSV (poate dura câteva secunde)...")
+    print("Analysing comments from CSV...")
     
     # Transformăm toate textele în numere
     toate_textele = df[col_text].astype(str).fillna("")
@@ -44,7 +44,7 @@ try:
     print(f"Done! We analyzed {len(df)} comments and prepared them for a demo.")
 
 except Exception as e:
-    print(f"❌ EROARE la citirea CSV: {e}")
+    print(f"ERROR at reading CSV: {e}")
     # Creăm un set de date gol de avarie
     df = pd.DataFrame(columns=[col_text, 'label_predis'])
 
