@@ -4,7 +4,7 @@ import itertools
 
 def descarca(url ,limita=500):
     dowloader = YoutubeCommentDownloader()
-    print(f"Starting download from: {url} ...")
+    print(f" Starting download from: {url} ...")
 
     generatorComentarii = dowloader.get_comments_from_url(url, sort_by=1)
 
@@ -13,7 +13,7 @@ def descarca(url ,limita=500):
     for i in itertools.islice(generatorComentarii, limita):
         text.append(i['text'])
 
-    print(f"Done! We downloaded {len(text)} comements.")
+    print(f" Done! We downloaded {len(text)} comements.")
     return text
 
 url_toxic = 'https://www.youtube.com/watch?v=ZJ-jI6i1kzo'
@@ -31,5 +31,5 @@ df = pd.DataFrame(dataset_final)
 
 df = df.sample(frac=1).reset_index(drop=True)
 
-numeFisier = 'datasetFinal.csv'
+numeFisier = 'final_dataset.csv'
 df.to_csv(numeFisier, index=False, encoding='utf-8-sig')
